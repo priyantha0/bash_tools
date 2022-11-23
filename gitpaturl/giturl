@@ -1,0 +1,16 @@
+#!/bin/bash
+input=$1
+git_base=$GIT_BASE
+
+# set spliting char
+IFS='/'
+
+# spliting text
+read -a splittedInput <<< "$input"
+
+if [ ! -z "$git_base" -a "$git_base" != " " ]; then
+	echo "$git_base/${splittedInput[-1]}"
+else
+	echo "GIT_BASE env var is empty, please set it first"
+fi
+
